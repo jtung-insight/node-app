@@ -3,7 +3,7 @@ name: CI
 on:
   workflow_dispatch:
 env:
-  IMAGE_NAME: nodeapp
+  IMAGE_NAME: nodeappdev
   
 jobs:
   build:
