@@ -25,12 +25,12 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         context: .
         push: true
-        tags: ${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+        tags: tungster/${{ env.IMAGE_NAME }}:${{ github.run_number }}
 
     - name: Repository Dispatch
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.PAT }}
-        repository: ${{ github.actor }}/argocd-node-app-config
+        repository: tungster/argocd-node-app-config
         event-type: new-image
-        client-payload: '{"image": "${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
+        client-payload: '{"image": "tungster/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
