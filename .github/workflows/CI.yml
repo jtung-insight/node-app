@@ -3,7 +3,7 @@ name: CI
 on:
   workflow_dispatch:
 env:
-  IMAGE_NAME: nodeappdev
+  IMAGE_NAME: nodeapp
   
 jobs:
   build:
@@ -31,6 +31,6 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.PAT }}
-        repository: tungster/argocd-node-app-config
+        repository: ${{ github.actor }}/argocd-node-app-config
         event-type: new-image
         client-payload: '{"image": "tungster/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
